@@ -1,2 +1,3 @@
-/.venv
-/voice
+.venv
+voice/
+__*
