@@ -5,6 +5,7 @@ import random
 import time
 
 bot = telebot.TeleBot("1543078251:AAHCkuKqo_0cjDUJe-AxS5mK7ViTukwCeLY")
+
 if not os.path.exists('voice/'):
     os.makedirs('voice/')
 
@@ -36,7 +37,7 @@ def send_welcome(message):
     if not os.path.exists('voice/' + str(chat_id)):
         os.makedirs('voice/' + str(chat_id))
 
-    start_msg = """Этот бот научит вашего ребенка алфавиту
+    start_msg = """Вас приветствует бот Алфавит. Я научу вашего ребенка алфавиту.
 Начать изучение - бот начнет присылать картинку буквы и голос.
 Начать обучение - бот запомнит ваши голосовые сообщения."""
 
