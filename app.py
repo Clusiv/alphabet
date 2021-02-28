@@ -75,6 +75,8 @@ def echo_all(message):
     elif message.text == '🛑 Stop':
         clientsStopStatus[chat_id] = 1
         bot.send_message(chat_id, 'Есть стоп', reply_markup=markup)
+    else:
+        bot.send_message(chat_id, 'Ну не понятно...', reply_markup=markup)
         
 @bot.message_handler(content_types=['voice'])
 def voice_processing(message):
