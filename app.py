@@ -4,7 +4,7 @@ import os
 import random 
 import time
 
-bot = telebot.TeleBot("1543078251:AAHCkuKqo_0cjDUJe-AxS5mK7ViTukwCeLY")
+bot = telebot.TeleBot("1543078251:AAFwCLbuzMi0yKLrEKpPZdG6fD9f9Zt-VCQ")
 
 if not os.path.exists('voice/'):
     os.makedirs('voice/')
@@ -20,6 +20,10 @@ stopmarkup.add(stopbtn)
 
 clientsWord = {}
 clientsStopStatus = {}
+
+# TODO: Найти более красивые картинки не больше 50КБ каждая.
+# TODO: Добавить функционал сказок.
+# TODO: Выбрать огласовку чужую или записать свой голос сказки.
 
 imageList = ['а.jpg','б.jpg','в.jpg','г.jpg','д.jpg','е.jpg','ё.jpg','ж.jpg','з.jpg','и.jpg','й.jpg','к.jpg','л.jpg','м.jpg','н.jpg','о.jpg','п.jpg','р.jpg','с.jpg','т.jpg','у.jpg','ф.jpg','х.jpg','ц.jpg','ч.jpg', 'ш.jpg' , 'щ.jpg', 'ъ.jpg','ы.jpg','ь.jpg','э.jpg','ю.jpg','я.jpg']
 voiceList = ['а.ogg','б.ogg','в.ogg','г.ogg','д.ogg','е.ogg','ё.ogg','ж.ogg','з.ogg','и.ogg','й.ogg','к.ogg','л.ogg','м.ogg','н.ogg','о.ogg','п.ogg','р.ogg','с.ogg','т.ogg','у.ogg','ф.ogg','х.ogg','ц.ogg','ч.ogg','ш.ogg','щ.ogg','ъ.ogg','ы.ogg','ь.ogg','э.ogg','ю.ogg','я.ogg']
@@ -43,7 +47,6 @@ def send_welcome(message):
 
     bot.send_message(chat_id, start_msg  ,reply_markup=markup)
 
-
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
     chat_id = message.chat.id
@@ -60,6 +63,7 @@ def echo_all(message):
                 bot.send_photo(chat_id, photo)
                 time.sleep(1)
 
+                # FIXME: Если нет голоса, то выдать сообщение о том что бот не обучен.
                 audio = open('voice/' + str(chat_id) + '/' + voiceList[i], 'rb')
                 bot.send_voice(chat_id, audio, reply_markup=stopmarkup)
                 time.sleep(5)
