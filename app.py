@@ -4,7 +4,7 @@ import os
 import random 
 import time
 
-bot = telebot.TeleBot("1543078251:AAFwCLbuzMi0yKLrEKpPZdG6fD9f9Zt-VCQ")
+bot = telebot.TeleBot("")
 
 if not os.path.exists('voice/'):
     os.makedirs('voice/')
